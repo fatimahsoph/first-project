@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>إدارة المؤلفين</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <h2>إدارة المؤلفين</h2>
+
+  <!-- عرض الكل -->
+  <button onclick="fetchAuthors()">عرض جميع المؤلفين</button>
+
+  <!-- عرض مؤلف برقم -->
+  <div>
+    <input type="text" id="viewId" placeholder="رقم المؤلف">
+    <button onclick="fetchAuthorById()">عرض مؤلف برقم</button>
+  </div>
+
+  <!-- حذف مؤلف -->
+  <div>
+    <input type="text" id="deleteId" placeholder="رقم المؤلف للحذف">
+    <button onclick="deleteAuthorById()">حذف المؤلف</button>
+  </div>
+
+  <!-- إضافة مؤلف -->
+  <div>
+    <input type="text" id="addName" placeholder="اسم المؤلف">
+    <button onclick="addAuthor()">إضافة مؤلف</button>
+  </div>
+
+  <!-- تعديل مؤلف -->
+  <div>
+    <input type="text" id="editId" placeholder="رقم المؤلف للتعديل">
+    <input type="text" id="editName" placeholder="الاسم الجديد">
+    <button onclick="updateAuthor()">تعديل المؤلف</button>
+  </div>
+
+  <!-- جدول عرض المؤلفين -->
+  <table>
+    <thead>
+      <tr>
+        <th>الاسم</th>
+        <th>الرقم (ID)</th>
+      </tr>
+    </thead>
+    <tbody id="authors"></tbody>
+  </table>
+<br>
+ <h2>إدارة الفئات</h2>
+
+<!-- عرض جميع الفئات -->
+<button onclick="fetchCategories()">عرض جميع الفئات</button>
+
+<!-- عرض فئة برقم -->
+<div>
+  <input type="text" id="viewCategoryId" placeholder="رقم الفئة">
+  <button onclick="fetchCategoryById()">عرض فئة برقم</button>
+</div>
+
+<!-- حذف فئة -->
+<div>
+  <input type="text" id="deleteCategoryId" placeholder="رقم الفئة للحذف">
+  <button onclick="deleteCategoryById()">حذف الفئة</button>
+</div>
+
+<!-- إضافة فئة -->
+<div>
+  <input type="text" id="addCategoryName" placeholder="اسم الفئة">
+  <button onclick="addCategory()">إضافة فئة</button>
+</div>
+
+<!-- تعديل فئة -->
+<div>
+  <input type="text" id="editCategoryId" placeholder="رقم الفئة للتعديل">
+  <input type="text" id="editCategoryName" placeholder="الاسم الجديد">
+  <button onclick="updateCategory()">تعديل الفئة</button>
+</div>
+
+<!-- جدول عرض الفئات -->
+<table>
+  <thead>
+    <tr>
+      <th>اسم الفئة</th>
+      <th>الرقم (ID)</th>
+    </tr>
+  </thead>
+  <tbody id="categories"></tbody>
+</table>
+
+<h2>إدارة الكتب</h2>
+
+<!-- عرض جميع الكتب -->
+<button onclick="fetchBooks()">عرض جميع الكتب</button>
+
+<!-- عرض كتاب برقم -->
+<div>
+  <input type="text" id="viewBookId" placeholder="رقم الكتاب">
+  <button onclick="fetchBookById()">عرض كتاب برقم</button>
+</div>
+
+<!-- حذف كتاب -->
+<div>
+  <input type="text" id="deleteBookId" placeholder="رقم الكتاب للحذف">
+  <button onclick="deleteBookById()">حذف الكتاب</button>
+</div>
+
+<!-- إضافة كتاب -->
+<div class="form-section">
+  <h3>إضافة كتاب جديد</h3>
+  <div class="form-group">
+    <label for="addTitle">عنوان الكتاب:</label>
+    <input type="text" id="addTitle" placeholder="أدخل عنوان الكتاب">
+  </div>
+  <div class="form-group">
+    <label for="addAuthorId">رقم المؤلف:</label>
+    <input type="text" id="addAuthorId" placeholder="مثلاً: 1">
+  </div>
+  <div class="form-group">
+    <label for="addCategoryId">رقم الفئة:</label>
+    <input type="text" id="addCategoryId" placeholder="مثلاً: 3">
+  </div>
+  <div class="form-group">
+    <label for="addPublishedDate">تاريخ النشر:</label>
+    <input type="date" id="addPublishedDate">
+  </div>
+  <button onclick="addBook()">📚 إضافة كتاب</button>
+</div>
+
+
+<!-- تعديل كتاب -->
+<div class="form-section">
+  <h3>تعديل كتاب</h3>
+  <div class="form-group">
+    <label for="editBookId">رقم الكتاب للتعديل:</label>
+    <input type="text" id="editBookId" placeholder="مثلاً: 5">
+  </div>
+  <div class="form-group">
+    <label for="editTitle">العنوان الجديد:</label>
+    <input type="text" id="editTitle" placeholder="أدخل العنوان الجديد">
+  </div>
+  <div class="form-group">
+    <label for="editAuthorId">رقم المؤلف الجديد:</label>
+    <input type="text" id="editAuthorId" placeholder="مثلاً: 2">
+  </div>
+  <div class="form-group">
+    <label for="editCategoryId">رقم الفئة الجديدة:</label>
+    <input type="text" id="editCategoryId" placeholder="مثلاً: 4">
+  </div>
+  <div class="form-group">
+    <label for="editPublishedDate">تاريخ النشر الجديد:</label>
+    <input type="date" id="editPublishedDate">
+  </div>
+  <button onclick="updateBook()">✏️ تعديل الكتاب</button>
+</div>
+
+<!-- جدول عرض الكتب -->
+<table>
+  <thead>
+    <tr>
+      <th>العنوان</th>
+      <th>الرقم</th>
+      <th>المؤلف</th>
+      <th>الفئة</th>
+      <th>تاريخ النشر</th>
+    </tr>
+  </thead>
+  <tbody id="books"></tbody>
+</table>
+
+
+<script src="main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>مواقيت الصلاة</title>
+  <link rel="stylesheet" href="time_prayer.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>مواقيت الصلاة</h2>
+    <button onclick="fetchPrayerTimes()">جلب المواقيت</button>
+
+    <div id="prayer-times" class="card hidden">
+      <p><strong>المدينة:</strong> <span id="city"></span></p>
+      <p><strong>التاريخ:</strong> <span id="date"></span></p>
+      <p><strong>الفجر:</strong> <span id="fajr"></span></p>
+      <p><strong>الإشراق:</strong> <span id="ishraq"></span></p>
+      <p><strong>الظهر:</strong> <span id="dhuhr"></span></p>
+      <p><strong>العصر:</strong> <span id="asr"></span></p>
+      <p><strong>المغرب:</strong> <span id="maghrib"></span></p>
+      <p><strong>العشاء:</strong> <span id="isha"></span></p>
+      <p class="note"><a href="https://www.esa.gov.eg/praytimes.aspx" target="_blank">لمزيد من التفاصيل</a></p>
+    </div>
+  </div>
+
+  <script src="time_prayer.js"></script>
+</body>
+</html>
